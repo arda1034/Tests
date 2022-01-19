@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-public class Gas_Test {
+public class Gas_Test_V2 {
     public AndroidDriver<MobileElement> driver;
     @BeforeMethod
     public void setup() throws MalformedURLException {
