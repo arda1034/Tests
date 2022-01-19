@@ -29,7 +29,7 @@ public class Gas_Test {
         driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
     }
 
-    public void giris() throws InterruptedException {
+        public void perFatura() throws InterruptedException {
         driver.findElement(By.id("com.example.imudogalgazhomework:id/personnel_button")).click();
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("com.example.imudogalgazhomework:id/personnelnum_text")).setValue("45678912");
@@ -52,9 +52,22 @@ public class Gas_Test {
         TimeUnit.SECONDS.sleep(1);
     }
 
+    public void aboneGiris() throws InterruptedException {
+        driver.findElement(By.id("com.example.imudogalgazhomework:id/main_spinner")).click();
+        TimeUnit.SECONDS.sleep(1);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[2]")).click();
+        TimeUnit.SECONDS.sleep(1);
+        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
+        TimeUnit.SECONDS.sleep(1);
+        driver.findElement(By.id("com.example.imudogalgazhomework:id/subnum_text")).setValue("12345678");
+        TimeUnit.SECONDS.sleep(1);
+        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
+        TimeUnit.SECONDS.sleep(1);
+    }
+
     @Test
-    public void personel_c1() throws InterruptedException {
-        giris();
+    public void personelRevC1() throws InterruptedException {
+        perFatura();
         List<MobileElement> buttons = driver.findElements(By.xpath("//android.widget.Button"));
         String[] texts = new String[buttons.size()];
         for(MobileElement text : buttons) texts = ArrayUtils.add(texts, text.getText());
@@ -66,8 +79,8 @@ public class Gas_Test {
     }
 
     @Test
-    public void personel_c2() throws InterruptedException {
-        giris();
+    public void personelRevC2() throws InterruptedException {
+        perFatura();
         driver.findElement(By.id("com.example.imudogalgazhomework:id/upload_button")).click();
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("com.google.android.documentsui:id/icon_thumb")).click();
@@ -75,27 +88,8 @@ public class Gas_Test {
     }
 
     @Test
-    public void personel_c3() throws InterruptedException {
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/personnel_button")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/personnelnum_text")).setValue("45678912");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/personnelpass_text")).setValue("12345678");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/subnum_text")).setValue("12345678");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/usedm3_text")).setValue("150");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/m3price_text")).setValue("2.5");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/month_spinner")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[2]")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
+    public void personelRevC3() throws InterruptedException {
+        perFatura();
         driver.findElement(By.id("com.example.imudogalgazhomework:id/upload_button")).click();
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("com.google.android.documentsui:id/icon_thumb")).click();
@@ -108,37 +102,19 @@ public class Gas_Test {
         TimeUnit.SECONDS.sleep(1);
         driver.navigate().back();
         TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/main_spinner")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[2]")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/subnum_text")).setValue("12345678");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
+        aboneGiris();
         driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
         TimeUnit.SECONDS.sleep(1);
         String text1 = driver.findElement(By.id("com.example.imudogalgazhomework:id/m3price_text")).getText();
         TimeUnit.SECONDS.sleep(1);
         String text2 = driver.findElement(By.id("com.example.imudogalgazhomework:id/usedm3_text")).getText();
-        Assert.assertEquals(text1, "2.5");
-        Assert.assertEquals(text2, "150");
+        Assert.assertEquals(text1, "3.00");
+        Assert.assertEquals(text2, "120");
     }
 
     @Test
-    public void abone_d1() throws InterruptedException {
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/main_spinner")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[2]")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/subnum_text")).setValue("12345678");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
+    public void aboneRevD1() throws InterruptedException {
+        aboneGiris();
         driver.findElement(By.id("com.example.imudogalgazhomework:id/pay_button")).click();
         TimeUnit.SECONDS.sleep(1);
         List<MobileElement> textviews = driver.findElements(By.xpath("//android.widget.TextView"));
@@ -152,17 +128,8 @@ public class Gas_Test {
     }
 
     @Test
-    public void abone_d3() throws InterruptedException {
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/main_spinner")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[2]")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/subnum_text")).setValue("12345678");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("com.example.imudogalgazhomework:id/continue_button")).click();
-        TimeUnit.SECONDS.sleep(1);
+    public void aboneRevD3() throws InterruptedException {
+        aboneGiris();
         driver.findElement(By.id("com.example.imudogalgazhomework:id/pay_button")).click();
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("com.example.imudogalgazhomework:id/month_spinner")).click();
@@ -171,9 +138,9 @@ public class Gas_Test {
         String txt = elem.getText();
         elem.click();
         TimeUnit.SECONDS.sleep(1);
-        String txt_2 = driver.findElement(By.id("com.example.imudogalgazhomework:id/info_text_5")).getText();
+        String txt2 = driver.findElement(By.id("com.example.imudogalgazhomework:id/info_text_5")).getText();
         TimeUnit.SECONDS.sleep(1);
-        boolean res1 = txt_2.contains(txt);
+        boolean res1 = txt2.contains(txt);
         Assert.assertTrue(res1);
     }
 }
