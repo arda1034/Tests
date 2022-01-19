@@ -13,7 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Market_Test {
+public class Market_Test_V2 {
     public AndroidDriver<MobileElement> driver;
 
     @BeforeMethod
